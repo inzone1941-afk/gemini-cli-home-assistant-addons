@@ -17,8 +17,10 @@ GEMINI_API_KEY=$(bashio::config 'gemini_api_key' || echo "")
 MCP_ENABLED=$(bashio::config 'enable_ha_mcp' || echo "true")
 SCREENSHOT_ENABLED=$(bashio::config 'screenshot_enabled' || echo "false")
 ACCESS_TOKEN=$(bashio::config 'access_token' || echo "")
+SMART_CONTEXT=$(bashio::config 'ha_smart_context' || echo "true")
+AUTO_LAUNCH=$(bashio::config 'auto_launch_gemini' || echo "true")
 
-bashio::log.info "Configuration: MCP=${MCP_ENABLED} SCREENSHOT=${SCREENSHOT_ENABLED}"
+bashio::log.info "Configuration: MCP=${MCP_ENABLED} SMART_CONTEXT=${SMART_CONTEXT} AUTO_LAUNCH=${AUTO_LAUNCH}"
 
 # ==============================================================================
 # Process user-defined environment variables
