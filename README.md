@@ -1,8 +1,8 @@
-# Gemini Terminal for Home Assistant
+# Gemini CLI Terminal for Home Assistant
 
 Bring the power of Google's **Gemini CLI** directly to your Home Assistant dashboard! 
 
-Gemini Terminal provides an AI-driven, persistent web terminal pre-configured with the Home Assistant MCP (`ha-mcp`) server, giving Gemini native access to your smart home environment.
+Gemini CLI Terminal provides an AI-driven, persistent web terminal pre-configured with the Home Assistant MCP (`ha-mcp`) server, giving Gemini native access to your smart home environment.
 
 ---
 
@@ -23,15 +23,15 @@ We've made installation as simple as possible.
 
 Click the button below to add this repository directly to your Home Assistant instance:
 
-[![Add Repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Foded996%2Fgemini-cli-home-assistant-addons)
+[![Add Repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Finzone1941-afk%2Fgemini-cli-home-assistant-addons)
 
 ### Manual Install
 
 1. In Home Assistant, go to **Settings** → **Add-ons** → **Add-on Store**.
 2. Click the **⋮** menu in the top right corner and select **Repositories**.
 3. Add the following URL:
-   `https://github.com/oded996/gemini-cli-home-assistant-addons`
-4. Find **Gemini Terminal** in the add-on store and click **Install**.
+   `https://github.com/inzone1941-afk/gemini-cli-home-assistant-addons`
+4. Find **Gemini CLI Terminal** in the add-on store and click **Install**.
 
 ## ⚙️ Configuration & Usage
 

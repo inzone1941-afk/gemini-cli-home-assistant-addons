@@ -11,8 +11,8 @@ Follow these steps to install the add-on:
 1. Navigate to your Home Assistant instance
 2. Go to **Settings** -> **Add-ons** -> **Add-on Store**
 3. Click the three dots (top right corner) and select **"Repositories"**
-4. Add the URL of this repository: `https://github.com/oded996/gemini-cli-home-assistant-addons` and click **"Add"**
-5. Find the **"Gemini Terminal"** add-on and click on it
+4. Add the URL of this repository: `https://github.com/inzone1941-afk/gemini-cli-home-assistant-addons` and click **"Add"**
+5. Find the **"Gemini CLI Terminal"** add-on and click on it
 6. Click **"Install"**
 
 ## Configuration
