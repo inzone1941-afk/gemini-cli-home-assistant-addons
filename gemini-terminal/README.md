@@ -71,7 +71,9 @@ ha-context
 
 This project is a refitted fork of the **[Claude Terminal for Home Assistant](https://github.com/heytcass/home-assistant-addons)** by **[Tom Cassady (@heytcass)](https://github.com/heytcass)**. 
 
-Special thanks to the original author for the excellent foundation and to the **[OpenCode](https://github.com/magnusoverli/opencode)** project for architectural inspiration.
+Special thanks to **[oded996](https://github.com/oded996)** for the original **[Gemini Terminal](https://github.com/oded996/gemini-cli-home-assistant-addons)** project which provided the core foundation for this enhanced version.
+
+Additional thanks to the original author for the excellent foundation and to the **[OpenCode](https://github.com/magnusoverli/opencode)** project for architectural inspiration.
 
 ## License
 
