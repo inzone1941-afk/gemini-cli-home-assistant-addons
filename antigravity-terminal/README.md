@@ -60,6 +60,7 @@ ha-context
 | `auto_launch_antigravity` | `true` | Automatically start Antigravity on terminal open. |
 | `enable_ha_mcp` | `true` | Enable the Home Assistant MCP server integration. |
 | `ha_smart_context` | `true` | Automatically generate a system context file (`ANTIGRAVITY.md`). |
+| `custom_instructions` | `""` | Custom system instructions and skill sets you want the AI to specialize in. |
 | `persistent_apt_packages` | `[]` | List of Debian (APT) packages to install on startup. |
 | `persistent_pip_packages` | `[]` | List of Python (PIP) packages to install on startup. |
 | `terminal_theme` | `breeze` | Visual theme for the terminal (Breeze, Dracula, Nord, etc.). |

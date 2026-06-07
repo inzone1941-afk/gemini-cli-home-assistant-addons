@@ -26,6 +26,7 @@ Your authentication credentials and session data are stored in the `/data/.gemin
 | `enable_ha_mcp` | `true` | Enable Home Assistant MCP server integration. |
 | `ha_smart_context` | `true` | Automatically generate HA context (`ANTIGRAVITY.md`) for AI awareness. |
 | `auto_launch_antigravity` | `true` | Automatically start Antigravity when opening the terminal |
+| `custom_instructions` | `""` | Custom system instructions and skill sets you want the AI to specialize in. |
 | `persistent_apt_packages` | `[]` | APT packages to install on every startup. |
 | `persistent_pip_packages` | `[]` | Python packages to install on every startup. |
 
