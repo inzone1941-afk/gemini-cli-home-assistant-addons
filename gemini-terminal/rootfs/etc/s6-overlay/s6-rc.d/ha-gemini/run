@@ -14,7 +14,7 @@ if [ -f /data/.env_vars ]; then
 fi
 
 bashio::log.info "=============================================="
-bashio::log.info "  Gemini CLI Terminal (ttyd + ingress)"
+bashio::log.info "  Antigravity CLI Terminal (ttyd + ingress)"
 bashio::log.info "=============================================="
 
 # ==============================================================================
@@ -115,4 +115,4 @@ exec ttyd \
     -t minimumContrastRatio=4.5 \
     -t scrollback=10000 \
     -t "theme=${THEME_JSON}" \
-    tmux new-session -A -s gemini /usr/local/bin/gemini-session.sh
+    tmux new-session -A -s antigravity /usr/local/bin/gemini-session.sh

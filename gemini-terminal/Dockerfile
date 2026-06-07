@@ -80,8 +80,10 @@ RUN python3 -m venv /opt/zigporter-venv \
     && /opt/zigporter-venv/bin/pip install --no-cache-dir zigporter \
     && ln -s /opt/zigporter-venv/bin/zigporter /usr/local/bin/zigporter
 
-# Install Gemini CLI and Prettier globally
-RUN npm install -g @google/gemini-cli@latest prettier \
+# Install Antigravity CLI and Prettier globally
+RUN curl -fsSL https://antigravity.google/cli/install.sh | bash -s -- -d /usr/local/bin \
+    && ln -sf /usr/local/bin/agy /usr/local/bin/gemini \
+    && npm install -g prettier \
     && npm cache clean --force
 
 # Copy package.json files first for better layer caching
@@ -100,14 +102,14 @@ RUN chmod +x /usr/local/bin/* \
     && chmod +x /etc/s6-overlay/s6-rc.d/ha-gemini/run \
     && chmod +x /etc/profile.d/hab-esphome.sh \
     && chmod +x /etc/profile.d/zigporter-z2m.sh \
-    && mkdir -p /data/.local/share/gemini /data/.config/gemini
+    && mkdir -p /data/.local/share/gemini /data/.config/gemini /data/.gemini/antigravity-cli
 
 # Set working directory to HA config (mounted at runtime)
 WORKDIR /homeassistant
 
 # Labels for Home Assistant
 LABEL \
-    io.hass.name="Gemini CLI Terminal" \
-    io.hass.description="Terminal interface for Google's Gemini CLI with deep MCP integration" \
+    io.hass.name="Antigravity CLI Terminal" \
+    io.hass.description="Terminal interface for Google's Antigravity CLI with deep MCP integration" \
     io.hass.type="addon" \
     io.hass.version="${BUILD_VERSION}"

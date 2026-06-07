@@ -22,7 +22,7 @@ async function run() {
     }
 
     // Discover HA Core URL
-    let haCoreUrl = 'http://supervisor/core';
+    let haCoreUrl = process.env.HA_URL || 'http://supervisor/core';
     
     const browser = await puppeteer.launch({
         executablePath: CHROMIUM_PATH,

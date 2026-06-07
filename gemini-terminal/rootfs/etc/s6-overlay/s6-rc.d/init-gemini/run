@@ -94,6 +94,11 @@ if [ "${SCREENSHOT_ENABLED}" = "true" ]; then
     printf 'export SCREENSHOT_ENABLED=true\n' >> "${ENV_VARS_FILE}"
 fi
 
+if [ -n "${AUTO_LAUNCH}" ]; then
+    printf 'export AUTO_LAUNCH_GEMINI=%q\n' "${AUTO_LAUNCH}" >> "${ENV_VARS_FILE}"
+fi
+
+
 if [ -n "${ACCESS_TOKEN}" ]; then
     export HA_ACCESS_TOKEN="${ACCESS_TOKEN}"
     ESPHOME_EXPORTS=$(node /usr/local/bin/discover-esphome.js 2>/dev/null || true)
@@ -103,31 +108,30 @@ if [ -n "${ACCESS_TOKEN}" ]; then
 fi
 
 # ==============================================================================
-# Setup Gemini configuration
+# Setup Antigravity configuration
 # ==============================================================================
 
-GEMINI_USER_DIR="/data/.config/gemini"
-mkdir -p "$GEMINI_USER_DIR"
+AGY_USER_DIR="/data/.gemini/antigravity-cli"
+mkdir -p "$AGY_USER_DIR"
+mkdir -p "/data/.gemini"
 mkdir -p "/data/.cache"
 mkdir -p "/data/.local/share"
-mkdir -p "/data/.config"
 
-if [ ! -f "$GEMINI_USER_DIR/settings.json" ]; then
-    bashio::log.info "Creating default Gemini settings..."
-    cat > "$GEMINI_USER_DIR/settings.json" << 'EOF'
+if [ ! -f "$AGY_USER_DIR/settings.json" ]; then
+    bashio::log.info "Creating default Antigravity settings..."
+    cat > "$AGY_USER_DIR/settings.json" << 'EOF'
 {
   "approvalMode": "default",
   "screenReader": false,
   "acp": false,
-  "sandbox": false,
-  "mcpServers": {}
+  "sandbox": false
 }
 EOF
 fi
 
-if [ ! -f "$GEMINI_USER_DIR/trustedFolders.json" ]; then
+if [ ! -f "/data/.gemini/trustedFolders.json" ]; then
     bashio::log.info "Creating default trusted folders..."
-    cat > "$GEMINI_USER_DIR/trustedFolders.json" << 'EOF'
+    cat > "/data/.gemini/trustedFolders.json" << 'EOF'
 {
   "/config": "TRUST_FOLDER",
   "/homeassistant": "TRUST_FOLDER",
@@ -143,6 +147,7 @@ if [ ! -f "/homeassistant/.geminiignore" ]; then
 .storage/
 .git/
 .gemini*/
+.agents/
 backups/
 addons/
 deps/
@@ -157,6 +162,10 @@ node_modules/
 EOF
 fi
 
+# Copy ignore files for Antigravity compatibility
+cp "/homeassistant/.geminiignore" "/homeassistant/.antigravityignore" 2>/dev/null || true
+cp "/homeassistant/.geminiignore" "/homeassistant/.aiexclude" 2>/dev/null || true
+
 # Copy AGENTS.md template to /homeassistant if missing
 if [ ! -f "/homeassistant/AGENTS.md" ]; then
     bashio::log.info "Deploying AGENTS.md template to /homeassistant..."
@@ -170,6 +179,10 @@ if [ "${SMART_CONTEXT}" = "true" ]; then
 fi
 
 # Set up MCP server
+if [ ! -f "$AGY_USER_DIR/mcp_config.json" ]; then
+    echo '{"mcpServers": {}}' > "$AGY_USER_DIR/mcp_config.json"
+fi
+
 if [ "$MCP_ENABLED" = "true" ]; then
     bashio::log.info "Configuring MCP server..."
     # The ha-mcp-server is located at /opt/ha-mcp-server/index.js
@@ -181,7 +194,10 @@ if [ "$MCP_ENABLED" = "true" ]; then
             "HA_ACCESS_TOKEN": "'$ACCESS_TOKEN'",
             "SCREENSHOT_ENABLED": "'$SCREENSHOT_ENABLED'"
         }
-    }' "$GEMINI_USER_DIR/settings.json" > "$GEMINI_USER_DIR/settings.tmp" && mv "$GEMINI_USER_DIR/settings.tmp" "$GEMINI_USER_DIR/settings.json"
+    }' "$AGY_USER_DIR/mcp_config.json" > "$AGY_USER_DIR/mcp_config.tmp" && mv "$AGY_USER_DIR/mcp_config.tmp" "$AGY_USER_DIR/mcp_config.json"
+else
+    bashio::log.info "Disabling MCP server..."
+    jq 'del(.mcpServers["home-assistant"])' "$AGY_USER_DIR/mcp_config.json" > "$AGY_USER_DIR/mcp_config.tmp" && mv "$AGY_USER_DIR/mcp_config.tmp" "$AGY_USER_DIR/mcp_config.json"
 fi
 
 # ==============================================================================
