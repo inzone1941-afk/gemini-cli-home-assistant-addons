@@ -3,7 +3,7 @@
 ## Project Overview
 Refitting the Home Assistant add-on to support Google's Antigravity CLI (`agy`), including interactive session management, Home Assistant MCP integration, and automated context generation.
 
-## Current Status: 🟢 **Stable Release (v3.0.0)**
+## Current Status: 🟢 **Stable Release (v3.0.1)**
 
 ### ✅ **Completed Tasks**
 

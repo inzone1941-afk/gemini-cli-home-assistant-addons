@@ -1,7 +1,7 @@
 ---
 name: "Antigravity CLI Terminal"
 description: "Terminal interface for Google's Antigravity CLI with deep MCP integration"
-version: "3.0.0"
+version: "3.0.1"
 slug: "antigravity_terminal"
 url: "https://github.com/inzone1941-afk/Google-antigravity-CLI-Terrminal-for-home-assistant"
 arch:

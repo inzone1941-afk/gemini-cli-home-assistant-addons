@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.1
+- **⚡ Rebranding Refinement & Custom Instructions**
+  - Fully rebranded s6 services, internal scripts, workflows, and logs to Antigravity.
+  - Added user instructions in `AGENTS.md` to define the AI as an elite programmer and dashboard designer.
+  - Introduced the `custom_instructions` configuration option in `config.yaml` to allow user-defined system prompts injected directly into `ANTIGRAVITY.md`.
+
 ## 3.0.0
 - **🚀 Migration to Google's Antigravity CLI**
   - Fully migrated the add-on from the legacy Gemini CLI to Google's native Go-based **Antigravity CLI** (`agy`).
